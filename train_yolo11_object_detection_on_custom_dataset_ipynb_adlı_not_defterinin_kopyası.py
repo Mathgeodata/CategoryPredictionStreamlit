@@ -48,7 +48,7 @@ import subprocess
 # Commented out IPython magic to ensure Python compatibility.
 # %pip install "ultralytics<=8.3.40" supervision roboflow
 # prevent ultralytics from tracking your activity
-!yolo settings sync=False
+
 import ultralytics
 ultralytics.checks()
 
