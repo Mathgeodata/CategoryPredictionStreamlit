@@ -41,6 +41,7 @@ Let's make sure that we have access to GPU. We can use `nvidia-smi` command to d
 import os
 HOME = os.getcwd()
 print(HOME)
+import subprocess
 
 """## Install YOLO11 via Ultralytics"""
 
@@ -161,7 +162,18 @@ latest_folder = max(glob.glob(f'{HOME}/runs/detect/predict*/'), key=os.path.getm
 input_video_path = os.path.join(latest_folder, 'output_images_video_1_sn_gecisli_v2_.avi')
 output_video_path = os.path.join(latest_folder, 'output_video.mp4')
 
-!ffmpeg -i {input_video_path} -c:v libx264 -preset medium -crf 23 -c:a aac -b:a 128k {output_video_path}
+# FFmpeg komutunu bir dize (string) olarak hazırlayın
+command = f"ffmpeg -i {input_video_path} -c:v libx264 -preset medium -crf 23 -c:a aac -b:a 128k {output_video_path}"
+
+# Komutu Python'ın subprocess modülü aracılığıyla çalıştırın
+try:
+    subprocess.run(command, shell=True, check=True)
+    # Komut başarılıysa devam edin
+except subprocess.CalledProcessError as e:
+    # Komut başarısız olursa Streamlit'te hata gösterin
+    st.error(f"Video dönüştürme (ffmpeg) sırasında bir hata oluştu: {e}")
+    # İsteğe bağlı olarak uygulamanın durmasını sağlayabilirsiniz
+    # st.stop()ffmpeg -i {input_video_path} -c:v libx264 -preset medium -crf 23 -c:a aac -b:a 128k {output_video_path}
 
 """**NOTE:** Let's take a look at few results."""
 
