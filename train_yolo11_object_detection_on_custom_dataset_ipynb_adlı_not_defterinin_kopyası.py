@@ -34,7 +34,7 @@ To fine-tune YOLO11, you need to provide your Roboflow API key. Follow these ste
 Let's make sure that we have access to GPU. We can use `nvidia-smi` command to do that. In case of any problems navigate to `Edit` -> `Notebook settings` -> `Hardware accelerator`, set it to `GPU`, and then click `Save`.
 """
 
-!nvidia-smi
+
 
 """**NOTE:** To make it easier for us to manage datasets, images and models we create a `HOME` constant."""
 
