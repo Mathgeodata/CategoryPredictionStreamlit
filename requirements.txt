@@ -1,4 +1,3 @@
-
 streamlit==1.39.0
 pandas>=2.0.0
 numpy>=1.24.0
@@ -12,6 +11,4 @@ python-dateutil>=2.8.2
 langdetect>=1.0.9
 seaborn>=0.13.0
 ultralytics
-opencv
-headless
-numpy
+opencv-python-headless
